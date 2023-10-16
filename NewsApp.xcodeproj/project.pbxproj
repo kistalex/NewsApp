@@ -9,21 +9,56 @@
 /* Begin PBXBuildFile section */
 		4647B0DA2ADB15B00014F39B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B0D92ADB15B00014F39B /* AppDelegate.swift */; };
 		4647B0DC2ADB15B00014F39B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B0DB2ADB15B00014F39B /* SceneDelegate.swift */; };
-		4647B0DE2ADB15B00014F39B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B0DD2ADB15B00014F39B /* ViewController.swift */; };
+		4647B0DE2ADB15B00014F39B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B0DD2ADB15B00014F39B /* HomeViewController.swift */; };
 		4647B0E12ADB15B00014F39B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0DF2ADB15B00014F39B /* Main.storyboard */; };
 		4647B0E32ADB15B10014F39B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0E22ADB15B10014F39B /* Assets.xcassets */; };
 		4647B0E62ADB15B10014F39B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0E42ADB15B10014F39B /* LaunchScreen.storyboard */; };
+		4647B0F62ADC23170014F39B /* NewYorkLarge-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F42ADC23170014F39B /* NewYorkLarge-Semibold.otf */; };
+		4647B0F72ADC23170014F39B /* NewYorkMedium-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F52ADC23170014F39B /* NewYorkMedium-Bold.otf */; };
+		4647B0F82ADC231C0014F39B /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0EE2ADC22E90014F39B /* Nunito-Black.ttf */; };
+		4647B0F92ADC23220014F39B /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F22ADC22E90014F39B /* Nunito-ExtraBold.ttf */; };
+		4647B0FA2ADC23220014F39B /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F12ADC22E90014F39B /* Nunito-Light.ttf */; };
+		4647B0FB2ADC23220014F39B /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0EF2ADC22E90014F39B /* Nunito-Bold.ttf */; };
+		4647B0FC2ADC23220014F39B /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F32ADC22E90014F39B /* Nunito-SemiBold.ttf */; };
+		4647B0FD2ADC23220014F39B /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4647B0F02ADC22E90014F39B /* Nunito-Regular.ttf */; };
+		4647B0FF2ADC247F0014F39B /* TextFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B0FE2ADC247F0014F39B /* TextFonts.swift */; };
+		4647B1082ADC369A0014F39B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1072ADC369A0014F39B /* MainTabBarController.swift */; };
+		4647B10A2ADC36E60014F39B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1092ADC36E60014F39B /* FavoriteViewController.swift */; };
+		4647B10C2ADC371B0014F39B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B10B2ADC371B0014F39B /* ProfileViewController.swift */; };
+		4647B1152ADC505B0014F39B /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1142ADC505B0014F39B /* SearchField.swift */; };
+		4647B1172ADC510F0014F39B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1162ADC510F0014F39B /* Colors.swift */; };
+		4647B11A2ADC5D580014F39B /* NotificationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1192ADC5D580014F39B /* NotificationButton.swift */; };
+		4647B11D2ADC635D0014F39B /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4647B11C2ADC635D0014F39B /* SnapKit */; };
+		4647B1222ADC67B90014F39B /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1212ADC67B90014F39B /* HeaderView.swift */; };
+		4647B1242ADC785E0014F39B /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4647B1232ADC785D0014F39B /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4647B0D62ADB15B00014F39B /* NewsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4647B0D92ADB15B00014F39B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4647B0DB2ADB15B00014F39B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4647B0DD2ADB15B00014F39B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4647B0DD2ADB15B00014F39B /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4647B0E02ADB15B00014F39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4647B0E22ADB15B10014F39B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4647B0E52ADB15B10014F39B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4647B0E72ADB15B10014F39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4647B0EE2ADC22E90014F39B /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		4647B0EF2ADC22E90014F39B /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		4647B0F02ADC22E90014F39B /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		4647B0F12ADC22E90014F39B /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		4647B0F22ADC22E90014F39B /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4647B0F32ADC22E90014F39B /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		4647B0F42ADC23170014F39B /* NewYorkLarge-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkLarge-Semibold.otf"; sourceTree = "<group>"; };
+		4647B0F52ADC23170014F39B /* NewYorkMedium-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NewYorkMedium-Bold.otf"; sourceTree = "<group>"; };
+		4647B0FE2ADC247F0014F39B /* TextFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFonts.swift; sourceTree = "<group>"; };
+		4647B1072ADC369A0014F39B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		4647B1092ADC36E60014F39B /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		4647B10B2ADC371B0014F39B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		4647B1142ADC505B0014F39B /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		4647B1162ADC510F0014F39B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4647B1192ADC5D580014F39B /* NotificationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationButton.swift; sourceTree = "<group>"; };
+		4647B1212ADC67B90014F39B /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		4647B1232ADC785D0014F39B /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4647B11D2ADC635D0014F39B /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,15 +92,144 @@
 		4647B0D82ADB15B00014F39B /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
-				4647B0D92ADB15B00014F39B /* AppDelegate.swift */,
-				4647B0DB2ADB15B00014F39B /* SceneDelegate.swift */,
-				4647B0DD2ADB15B00014F39B /* ViewController.swift */,
+				4647B1012ADC2A720014F39B /* Application */,
+				4647B1022ADC2B780014F39B /* Extensions */,
+				4647B1002ADC2A430014F39B /* Resources */,
+				4647B1042ADC2BA00014F39B /* Screens */,
+				4647B1032ADC2B8A0014F39B /* Services */,
+				4647B1062ADC2BB10014F39B /* SupportingFiles */,
+			);
+			path = NewsApp;
+			sourceTree = "<group>";
+		};
+		4647B0ED2ADC22BE0014F39B /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4647B0EE2ADC22E90014F39B /* Nunito-Black.ttf */,
+				4647B0F42ADC23170014F39B /* NewYorkLarge-Semibold.otf */,
+				4647B0F52ADC23170014F39B /* NewYorkMedium-Bold.otf */,
+				4647B0EF2ADC22E90014F39B /* Nunito-Bold.ttf */,
+				4647B0F22ADC22E90014F39B /* Nunito-ExtraBold.ttf */,
+				4647B0F12ADC22E90014F39B /* Nunito-Light.ttf */,
+				4647B0F02ADC22E90014F39B /* Nunito-Regular.ttf */,
+				4647B0F32ADC22E90014F39B /* Nunito-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4647B1002ADC2A430014F39B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4647B0ED2ADC22BE0014F39B /* Fonts */,
 				4647B0DF2ADB15B00014F39B /* Main.storyboard */,
 				4647B0E22ADB15B10014F39B /* Assets.xcassets */,
 				4647B0E42ADB15B10014F39B /* LaunchScreen.storyboard */,
 				4647B0E72ADB15B10014F39B /* Info.plist */,
 			);
-			path = NewsApp;
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4647B1012ADC2A720014F39B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				4647B0D92ADB15B00014F39B /* AppDelegate.swift */,
+				4647B0DB2ADB15B00014F39B /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4647B1022ADC2B780014F39B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4647B1032ADC2B8A0014F39B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		4647B1042ADC2BA00014F39B /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				4647B10F2ADC500C0014F39B /* Home */,
+				4647B1122ADC50410014F39B /* Favorite */,
+				4647B1132ADC504B0014F39B /* Profile */,
+				4647B1072ADC369A0014F39B /* MainTabBarController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		4647B1062ADC2BB10014F39B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				4647B0FE2ADC247F0014F39B /* TextFonts.swift */,
+				4647B1162ADC510F0014F39B /* Colors.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		4647B10F2ADC500C0014F39B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4647B1102ADC50130014F39B /* Views */,
+				4647B0DD2ADB15B00014F39B /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4647B1102ADC50130014F39B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4647B11E2ADC677C0014F39B /* HeaderView */,
+				4647B1182ADC5D440014F39B /* NotificationButton */,
+				4647B1112ADC50200014F39B /* SearchField */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4647B1112ADC50200014F39B /* SearchField */ = {
+			isa = PBXGroup;
+			children = (
+				4647B1142ADC505B0014F39B /* SearchField.swift */,
+			);
+			path = SearchField;
+			sourceTree = "<group>";
+		};
+		4647B1122ADC50410014F39B /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				4647B1092ADC36E60014F39B /* FavoriteViewController.swift */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		4647B1132ADC504B0014F39B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				4647B10B2ADC371B0014F39B /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		4647B1182ADC5D440014F39B /* NotificationButton */ = {
+			isa = PBXGroup;
+			children = (
+				4647B1192ADC5D580014F39B /* NotificationButton.swift */,
+			);
+			path = NotificationButton;
+			sourceTree = "<group>";
+		};
+		4647B11E2ADC677C0014F39B /* HeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				4647B1212ADC67B90014F39B /* HeaderView.swift */,
+				4647B1232ADC785D0014F39B /* CustomButton.swift */,
+			);
+			path = HeaderView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +248,9 @@
 			dependencies = (
 			);
 			name = NewsApp;
+			packageProductDependencies = (
+				4647B11C2ADC635D0014F39B /* SnapKit */,
+			);
 			productName = NewsApp;
 			productReference = 4647B0D62ADB15B00014F39B /* NewsApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +279,9 @@
 				Base,
 			);
 			mainGroup = 4647B0CD2ADB15B00014F39B;
+			packageReferences = (
+				4647B11B2ADC635D0014F39B /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 4647B0D72ADB15B00014F39B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +296,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4647B0FD2ADC23220014F39B /* Nunito-Regular.ttf in Resources */,
+				4647B0F72ADC23170014F39B /* NewYorkMedium-Bold.otf in Resources */,
 				4647B0E62ADB15B10014F39B /* LaunchScreen.storyboard in Resources */,
 				4647B0E32ADB15B10014F39B /* Assets.xcassets in Resources */,
+				4647B0F62ADC23170014F39B /* NewYorkLarge-Semibold.otf in Resources */,
+				4647B0FC2ADC23220014F39B /* Nunito-SemiBold.ttf in Resources */,
+				4647B0FB2ADC23220014F39B /* Nunito-Bold.ttf in Resources */,
 				4647B0E12ADB15B00014F39B /* Main.storyboard in Resources */,
+				4647B0F82ADC231C0014F39B /* Nunito-Black.ttf in Resources */,
+				4647B0FA2ADC23220014F39B /* Nunito-Light.ttf in Resources */,
+				4647B0F92ADC23220014F39B /* Nunito-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +317,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4647B0DE2ADB15B00014F39B /* ViewController.swift in Sources */,
+				4647B1152ADC505B0014F39B /* SearchField.swift in Sources */,
+				4647B1172ADC510F0014F39B /* Colors.swift in Sources */,
+				4647B11A2ADC5D580014F39B /* NotificationButton.swift in Sources */,
+				4647B0FF2ADC247F0014F39B /* TextFonts.swift in Sources */,
+				4647B0DE2ADB15B00014F39B /* HomeViewController.swift in Sources */,
+				4647B1082ADC369A0014F39B /* MainTabBarController.swift in Sources */,
 				4647B0DA2ADB15B00014F39B /* AppDelegate.swift in Sources */,
+				4647B1222ADC67B90014F39B /* HeaderView.swift in Sources */,
+				4647B1242ADC785E0014F39B /* CustomButton.swift in Sources */,
+				4647B10C2ADC371B0014F39B /* ProfileViewController.swift in Sources */,
+				4647B10A2ADC36E60014F39B /* FavoriteViewController.swift in Sources */,
 				4647B0DC2ADB15B00014F39B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,12 +482,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MG7VG49PJM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,12 +509,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MG7VG49PJM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsApp/Info.plist;
+				INFOPLIST_FILE = NewsApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,6 +549,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4647B11B2ADC635D0014F39B /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4647B11C2ADC635D0014F39B /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4647B11B2ADC635D0014F39B /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4647B0CE2ADB15B00014F39B /* Project object */;
 }

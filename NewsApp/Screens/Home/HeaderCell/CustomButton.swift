@@ -10,8 +10,6 @@
 import UIKit
 import SnapKit
 
-
-
 class CustomButton: UIButton {
     private let buttonText = UILabel()
     private let iconImage = UIImageView()
@@ -37,7 +35,7 @@ class CustomButton: UIButton {
         addSubview(iconImage)
         buttonText.textColor = UIColor(named: ColorName.SecondColor.rawValue)
         iconImage.tintColor = UIColor(named: ColorName.SecondColor.rawValue)
-        buttonText.font = UIFont(name: TextFont.Nunito.semiBold.rawValue, size: 12)
+        buttonText.font = UIFont(name: TextFont.Nunito.semiBold.rawValue, size: 16)
     }
     
     
@@ -56,7 +54,7 @@ class CustomButton: UIButton {
         iconImage.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(20) // Размер изображения
+            make.width.height.equalTo(20)
         }
     }
 }

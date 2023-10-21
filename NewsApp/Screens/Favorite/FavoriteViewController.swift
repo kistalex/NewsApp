@@ -18,7 +18,7 @@ class FavoriteViewController: UIViewController {
         
         view.backgroundColor = .white
         setupViews()
-        setupConstraints()
+        setConstraints()
     }
     
     private func setupViews(){
@@ -30,7 +30,7 @@ class FavoriteViewController: UIViewController {
         
     }
     
-    private func setupConstraints(){
+    private func setConstraints(){
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             label.centerYAnchor.constraint(equalTo: view.centerYAnchor)

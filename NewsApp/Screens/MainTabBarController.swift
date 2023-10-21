@@ -16,7 +16,6 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         createTabBar()
         setTabBarAppearance()
-        
     }
     
     private func createTabBar(){

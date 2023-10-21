@@ -6,75 +6,79 @@
 // Created by Alexander Kist on 14.10.2023.
 //
 
-//UIImage(systemName: "line.3.horizontal.decrease")
-
 
 import UIKit
 import SnapKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController{
     
-    private let searchField = SearchField()
-    private let notificationButton = NotificationButton()
-    
-    private let headerView = HeaderView()
-    
-    private let scrollView = UIScrollView()
-    private let contentView = UIView()
-    
-    
+    private let freshNewsTableView = UITableView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViews()
-        setupConstraints()
+        setConstraints()
+        setupTableView()
     }
     
-    private func setupViews(){
-        view.addSubview(scrollView)
-        scrollView.addSubview(contentView)
-        contentView.addSubview(searchField)
-        contentView.addSubview(notificationButton)
-        contentView.addSubview(headerView)
-        
-        searchField.textColor = .black
-        searchField.layer.borderColor = UIColor.black.cgColor
-        
+    private func setupViews() {
+        view.addSubview(freshNewsTableView)
     }
     
-    private func setupConstraints() {
-        
-        scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide)
-            make.leading.trailing.bottom.equalToSuperview()
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.width.equalTo(scrollView.snp.width)
-        }
-        
-        searchField.snp.makeConstraints { make in
-            make.top.equalTo(contentView.snp.top)
-            make.leading.equalTo(contentView.snp.leading).offset(20)
-            make.trailing.equalTo(notificationButton.snp.leading).offset(-20)
-            make.height.equalTo(50).multipliedBy(1.25)
-        }
-        
-        notificationButton.snp.makeConstraints { make in
-            make.top.equalTo(searchField.snp.top)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-20)
-            make.height.width.equalTo(50).multipliedBy(1.25)
-            
-        }
-        
-        headerView.snp.makeConstraints { make in
-            make.top.equalTo(searchField.snp.bottom).offset(15)
-            make.leading.equalTo(contentView.snp.leading).offset(20)
-            make.trailing.equalTo(contentView.snp.trailing).offset(-20)
-            make.bottom.equalTo(contentView.snp.bottom).offset(-20)
+    private func setupTableView(){
+        freshNewsTableView.dataSource = self
+        freshNewsTableView.delegate = self
+        freshNewsTableView.showsVerticalScrollIndicator = false
+        freshNewsTableView.showsHorizontalScrollIndicator = false
+        freshNewsTableView.sectionHeaderTopPadding = 0
+        freshNewsTableView.separatorStyle = .none
+        freshNewsTableView.backgroundColor = .clear
+        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
+        freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
+        freshNewsTableView.register(FreshNewsTableViewCell.self, forCellReuseIdentifier: "\(FreshNewsTableViewCell.self)")
+        freshNewsTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "\(MenuTableViewCell.self)")
+    }
+    
+    private func setConstraints() {
+        freshNewsTableView.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
+}
+
+// MARK: - UITableViewDataSource
+extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SearchCell.self)", for: indexPath) as? SearchCell else {
+                return UITableViewCell()
+            }
+            return cell
+        }else  if indexPath.row == 1{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(HeaderViewCell.self)", for: indexPath) as? HeaderViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        } else if indexPath.row == 2{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(FreshNewsTableViewCell.self)", for: indexPath) as? FreshNewsTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        } else{
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MenuTableViewCell.self)", for: indexPath) as? MenuTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        }
+    }
+}
+// MARK: - UITableViewDelegate
+extension HomeViewController: UITableViewDelegate {
+
 }
 

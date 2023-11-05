@@ -1,0 +1,14 @@
+disabled_rules:
+  - colon
+  - comma
+  - control_statement
+opt_in_rules:
+  - empty_count
+  - missing_docs
+excluded:
+  - Carthage
+  - Pods
+  - Source/ExcludedFolder
+  - Source/ExcludedFile.swift
+line_length: 200
+warning_threshold: 15

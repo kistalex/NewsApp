@@ -1,23 +1,22 @@
 //
 //
 // NewsApp
-// Headlines.swift
+// News.swift
 // 
 // Created by Alexander Kist on 05.11.2023.
 //
 
-
 import Foundation
 
-struct Headlines: Decodable {
+struct News: Codable {
     let status: String
     let totalResults: Int
-    let articles: [Article]
+    let articles: [News]
 }
 
-// MARK: Article
-struct Article: Decodable {
-    let source: Source
+// MARK: News
+ struct News: Codable {
+    let source: Publishing
     let author: String?
     let title, description: String
     let url: String
@@ -27,7 +26,7 @@ struct Article: Decodable {
 }
 
 // MARK: Source
-struct Source: Decodable {
+ struct Publishing: Codable {
     let id: String?
     let name: String
 }

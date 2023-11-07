@@ -37,7 +37,7 @@ final class MenuTableViewCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceHorizontal = true
-        collectionView.register(MenuButtonCollectionViewCell.self, forCellWithReuseIdentifier: "\(MenuButtonCollectionViewCell.self)")
+        collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: "\(MenuCollectionViewCell.self)")
     }
 
     private func setConstraints() {
@@ -56,7 +56,7 @@ extension MenuTableViewCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MenuButtonCollectionViewCell.self)", for: indexPath) as? MenuButtonCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(MenuCollectionViewCell.self)", for: indexPath) as? MenuCollectionViewCell else {
             return UICollectionViewCell()
         }
         let item = menuCategories[indexPath.item]

@@ -16,11 +16,11 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationItem.title = "Главное"
         setupViews()
         setConstraints()
         setupTableView()
     }
-
     private func setupViews() {
         view.addSubview(freshNewsTableView)
     }
@@ -31,7 +31,7 @@ final class HomeViewController: UIViewController {
         freshNewsTableView.showsHorizontalScrollIndicator = false
         freshNewsTableView.separatorStyle = .none
         freshNewsTableView.backgroundColor = .clear
-        freshNewsTableView.allowsSelection = false
+        freshNewsTableView.allowsSelection = true
         freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
         freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
         freshNewsTableView.register(FreshNewsTableViewCell.self, forCellReuseIdentifier: "\(FreshNewsTableViewCell.self)")
@@ -42,7 +42,7 @@ final class HomeViewController: UIViewController {
     private func setConstraints() {
         freshNewsTableView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalToSuperview()
+            make.bottom.equalTo(view.snp.bottom)
         }
     }
 }
@@ -68,6 +68,7 @@ extension HomeViewController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(FreshNewsTableViewCell.self)", for: indexPath) as? FreshNewsTableViewCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             return cell
         } else if indexPath.row == 3 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MenuTableViewCell.self)", for: indexPath) as? MenuTableViewCell else {
@@ -82,4 +83,11 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
 }
-// MARK: - UITableViewDelegate
+
+extension HomeViewController: FreshNewsTableViewCellDelegate {
+    func freshNewsTableViewCell(_ freshNewsTableViewCell: FreshNewsTableViewCell, didSelectNews news: Article) {
+        let viewModel = NewsDetailViewModel(news: news)
+        let detailVC = NewsDetailViewController(viewModel: viewModel)
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}

@@ -13,7 +13,7 @@ final class NewsRequest {
         static let baseUrl = "https://newsapi.org/v2"
     }
 
-    private let endpoint: HeadlineEndpoint
+    private let endpoint: NewsEndpoint
     private let pathComponents: [String]
     private let queryParameters: [URLQueryItem]
 
@@ -42,17 +42,30 @@ final class NewsRequest {
     }
 
     public let httpMethod = "GET"
-    ///Создание  API url 
+    /// Создание  API url
     public var url: URL? {
         return URL(string: urlString)
     }
-    ///Конструктор запроса
+    /// Конструктор запроса
     public init(
-        endpoint: HeadlineEndpoint,
+        endpoint: NewsEndpoint,
         pathComponents: [String] = [],
         queryParameters: [URLQueryItem] = []) {
-        self.endpoint = endpoint
-        self.pathComponents = pathComponents
-        self.queryParameters = queryParameters
-    }
+            self.endpoint = endpoint
+            self.pathComponents = pathComponents
+            self.queryParameters = queryParameters
+        }
+}
+
+extension NewsRequest {
+    static let listNewsRequest = NewsRequest(endpoint: NewsEndpoint.everything, pathComponents: [], queryParameters: [
+        URLQueryItem(name: "q", value: "today"),
+        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
+        URLQueryItem(name: "sortBy", value: "publishedAt"),
+        URLQueryItem(name: "pageSize", value: "10")
+    ])
+    static let listTopNewsRequest = NewsRequest(endpoint: NewsEndpoint.topHeadlines ,queryParameters: [
+        URLQueryItem(name: "country", value: "ru"),
+        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab")
+    ])
 }

@@ -11,14 +11,15 @@ import Foundation
 struct News: Codable {
     let status: String
     let totalResults: Int
-    let articles: [News]
+    let articles: [Article]
 }
 
 // MARK: News
- struct News: Codable {
-    let source: Publishing
+ struct Article: Codable {
+    let source: Source
     let author: String?
-    let title, description: String
+    let title: String
+    let description: String?
     let url: String
     let urlToImage: String?
     let publishedAt: Date
@@ -26,7 +27,7 @@ struct News: Codable {
 }
 
 // MARK: Source
- struct Publishing: Codable {
+ struct Source: Codable {
     let id: String?
     let name: String
 }

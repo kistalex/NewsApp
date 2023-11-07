@@ -25,11 +25,9 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
         label.textColor = .white
         label.backgroundColor = .lightGray.withAlphaComponent(0.4)
         label.numberOfLines = 3
-        label.text = "“I’m going to say this very bluntly again,” he added. “Buy them only if you’re prepared to lose all your money.”"
         label.font = UIFont(name: TextFont.Nunito.regular.rawValue, size: 14)
         return label
     }()
-
 
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
@@ -93,8 +91,11 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
                     let image = UIImage(data: data)
                     self?.backgroundImageView.image = image
                 }
-            case .failure(let error):
-                print(String(describing: error))
+            case .failure:
+                DispatchQueue.main.async {
+                    let image = UIImage(systemName: "questionmark")
+                    self?.backgroundImageView.image = image
+                }
             }
         }
     }

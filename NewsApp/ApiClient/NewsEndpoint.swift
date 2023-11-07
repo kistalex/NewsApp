@@ -17,7 +17,7 @@ import Foundation
         case .everything:
             return "everything"
         case .topHeadlines:
-            return "top-headlines"
+            return rawValue.replacingOccurrences(of: "topH", with: "top-h")
         }
     }
 }

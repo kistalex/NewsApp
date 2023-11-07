@@ -44,7 +44,7 @@ class CategoryNewsTableCell: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceHorizontal = false
-        collectionView.register(CategoryNewsCollectionCell.self, forCellWithReuseIdentifier: "\(CategoryNewsCollectionCell.self)")
+        collectionView.register(CategoryNewsCollectionViewCell.self, forCellWithReuseIdentifier: "\(CategoryNewsCollectionViewCell.self)")
     }
 
     private func setConstraints() {
@@ -62,7 +62,7 @@ extension CategoryNewsTableCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryNewsCollectionCell.self)", for: indexPath) as? CategoryNewsCollectionCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryNewsCollectionViewCell.self)", for: indexPath) as? CategoryNewsCollectionViewCell else {
             return UICollectionViewCell()
         }
 //        let item = data[indexPath.item]

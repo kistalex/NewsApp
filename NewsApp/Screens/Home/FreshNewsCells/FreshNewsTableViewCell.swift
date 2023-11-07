@@ -8,28 +8,43 @@
 
 import UIKit
 
+protocol FreshNewsTableViewCellDelegate: AnyObject {
+    func freshNewsTableViewCell(
+        _ freshNewsTableViewCell: FreshNewsTableViewCell,
+        didSelectNews news: Article
+    )
+}
+
 final class FreshNewsTableViewCell: UITableViewCell {
 
-    private var data: [String] = [
-        "Crypto investors should be prepared to lose all their money, BOE governor says 1",
-        "Crypto investors should be prepared to lose all their money, BOE governor says 2",
-        "Crypto investors should be prepared to lose all their money, BOE governor says 3",
-        "Crypto investors should be prepared to lose all their money, BOE governor says 4",
-        "Crypto investors should be prepared to lose all their money, BOE governor says 5"
-    ]
+    public weak var delegate: FreshNewsTableViewCellDelegate?
+
+    private let viewModel = FreshNewsCellViewModel()
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.isHidden = true
+        collectionView.alpha = 0
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
 
+    private let spinner: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+        return spinner
+    }()
+
+    private let label = UILabel()
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
+        viewModel.fetchTopNews()
         setConstraints()
     }
 
@@ -39,46 +54,41 @@ final class FreshNewsTableViewCell: UITableViewCell {
 
     private func setupViews() {
         contentView.addSubview(collectionView)
+        contentView.addSubview(spinner)
+        spinner.startAnimating()
         backgroundColor = .white
-        collectionView.backgroundColor = .clear
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.delegate = viewModel
+        collectionView.dataSource = viewModel
+        viewModel.delegate = self
         collectionView.alwaysBounceHorizontal = true
-        collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "\(NewsCollectionViewCell.self)")
+        collectionView.register(FreshNewsCollectionViewCell.self, forCellWithReuseIdentifier: "\(FreshNewsCollectionViewCell.self)")
+
     }
 
     private func setConstraints() {
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.bottom.equalToSuperview().inset(10)
+            make.top.bottom.equalToSuperview()/*.inset(10)*/
             make.height.equalTo(240).multipliedBy(0.4)
         }
-    }
-}
-// MARK: - UICollectionViewDataSource
-extension FreshNewsTableViewCell: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data.count
-    }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(NewsCollectionViewCell.self)", for: indexPath) as? NewsCollectionViewCell else {
-            return UICollectionViewCell()
+        spinner.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
         }
-        let item = data[indexPath.item]
-        cell.configure(with: item)
-        return cell
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension FreshNewsTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.size
-        return CGSize(width: size.width - 30 , height: size.height)
+extension FreshNewsTableViewCell: FreshNewsCellViewModelDelegate {
+    func didSelectNews(_ news: Article) {
+        delegate?.freshNewsTableViewCell(self, didSelectNews: news)
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    func didTopNewsFetched() {
+        spinner.stopAnimating()
+        collectionView.isHidden = false
+        collectionView.reloadData()
+        UIView.animate(withDuration: 1) {
+            self.collectionView.alpha = 1
+        }
     }
 }

@@ -33,10 +33,11 @@ final class MainTabBarController: UITabBarController {
         ]
     }
 
-    private func createViewController(viewController: UIViewController, title: String, image: UIImage?) -> UIViewController {
+    private func createViewController(viewController: UIViewController, title: String, image: UIImage?) -> UINavigationController {
         viewController.tabBarItem.title = title
         viewController.tabBarItem.image = image
-        return viewController
+        viewController.navigationItem.largeTitleDisplayMode = .automatic
+        return UINavigationController(rootViewController: viewController)
     }
 
     private func setTabBarAppearance() {

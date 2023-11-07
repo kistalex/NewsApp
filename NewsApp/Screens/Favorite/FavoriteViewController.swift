@@ -16,6 +16,8 @@ final class FavoriteViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
+        navigationItem.title = "Избранное"
+
         setupViews()
         setConstraints()
     }

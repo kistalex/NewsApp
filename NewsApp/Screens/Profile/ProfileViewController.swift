@@ -13,8 +13,8 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
+        navigationItem.title = "Профиль"
         setupViews()
         setConstraints()
     }

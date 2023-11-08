@@ -93,7 +93,6 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
                 }
             case .failure(let error):
                 print(String(describing: error))
-                self?.backgroundImageView.removeFromSuperview()
             }
         }
     }

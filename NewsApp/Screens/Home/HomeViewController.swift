@@ -85,9 +85,10 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 extension HomeViewController: FreshNewsTableViewCellDelegate {
-    func freshNewsTableViewCell(_ freshNewsTableViewCell: FreshNewsTableViewCell, didSelectNews news: Article) {
-        let viewModel = NewsDetailViewModel(news: news)
+    func freshNewsTableViewCell(_ freshNewsTableViewCell: FreshNewsTableViewCell, didSelectNews article: Article) {
+        let viewModel = ArticleDetailViewModel(article: article)
         let detailVC = NewsDetailViewController(viewModel: viewModel)
+//        detailVC.configure(viewModel)
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

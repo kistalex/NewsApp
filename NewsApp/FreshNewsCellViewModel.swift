@@ -19,11 +19,11 @@ final class FreshNewsCellViewModel: NSObject {
 
     private var topNews: [Article] = [] {
         didSet {
-            newsCellViewModels = topNews.map { news in
+            newsCellViewModels = topNews.map { article in
                 return NewsCollectionViewCellViewModel(
-                    title: news.title,
-                    description: news.description,
-                    urlToImage: URL(string: news.urlToImage ?? "")
+                    title: article.title,
+                    description: article.description,
+                    urlToImage: URL(string: article.urlToImage ?? "")
                 )
             }
 
@@ -40,7 +40,7 @@ final class FreshNewsCellViewModel: NSObject {
 
     func fetchTopNews() {
         NewsService.shared.execute(
-            .listNewsRequest,
+            .listTopNewsRequest,
             expecting: News.self) { [weak self] result in
                 switch result {
                 case .success(let newsModel):
@@ -88,7 +88,7 @@ extension FreshNewsCellViewModel: UICollectionViewDelegateFlowLayout {
 extension FreshNewsCellViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let news = topNews[indexPath.row]
-        delegate?.didSelectNews(news )
+        let article = topNews[indexPath.row]
+        delegate?.didSelectNews(article)
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 protocol FreshNewsTableViewCellDelegate: AnyObject {
     func freshNewsTableViewCell(
         _ freshNewsTableViewCell: FreshNewsTableViewCell,
-        didSelectNews news: Article
+        didSelectNews article: Article
     )
 }
 

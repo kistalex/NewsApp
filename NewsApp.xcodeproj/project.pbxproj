@@ -46,8 +46,9 @@
 		4653FA262AF7FC8D008E7EB8 /* FreshNewsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4653FA252AF7FC8D008E7EB8 /* FreshNewsCellViewModel.swift */; };
 		4653FA282AF80772008E7EB8 /* NewsCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4653FA272AF80772008E7EB8 /* NewsCollectionViewCellViewModel.swift */; };
 		46EBB47D2AFA4D8C0014A35C /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EBB47C2AFA4D8C0014A35C /* NewsDetailViewController.swift */; };
-		46EBB47F2AFA4F1B0014A35C /* NewsDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EBB47E2AFA4F1B0014A35C /* NewsDetailViewModel.swift */; };
+		46EBB47F2AFA4F1B0014A35C /* ArticleDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EBB47E2AFA4F1B0014A35C /* ArticleDetailViewModel.swift */; };
 		46EBB4812AFA62710014A35C /* SourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EBB4802AFA62710014A35C /* SourceView.swift */; };
+		46EBB4842AFABE800014A35C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46EBB4832AFABE800014A35C /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,8 +94,9 @@
 		4653FA252AF7FC8D008E7EB8 /* FreshNewsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreshNewsCellViewModel.swift; sourceTree = "<group>"; };
 		4653FA272AF80772008E7EB8 /* NewsCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		46EBB47C2AFA4D8C0014A35C /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
-		46EBB47E2AFA4F1B0014A35C /* NewsDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewModel.swift; sourceTree = "<group>"; };
+		46EBB47E2AFA4F1B0014A35C /* ArticleDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewModel.swift; sourceTree = "<group>"; };
 		46EBB4802AFA62710014A35C /* SourceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceView.swift; sourceTree = "<group>"; };
+		46EBB4832AFABE800014A35C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 		4647B0D82ADB15B00014F39B /* NewsApp */ = {
 			isa = PBXGroup;
 			children = (
+				46EBB4822AFABE690014A35C /* Manager */,
 				4653FA242AF7FC4C008E7EB8 /* ViewModels */,
 				4653FA1B2AF7A83D008E7EB8 /* ApiClient */,
 				4653FA182AF79F3D008E7EB8 /* Models */,
@@ -337,7 +340,7 @@
 			children = (
 				4653FA252AF7FC8D008E7EB8 /* FreshNewsCellViewModel.swift */,
 				4653FA272AF80772008E7EB8 /* NewsCollectionViewCellViewModel.swift */,
-				46EBB47E2AFA4F1B0014A35C /* NewsDetailViewModel.swift */,
+				46EBB47E2AFA4F1B0014A35C /* ArticleDetailViewModel.swift */,
 			);
 			name = ViewModels;
 			sourceTree = "<group>";
@@ -349,6 +352,14 @@
 				46EBB4802AFA62710014A35C /* SourceView.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		46EBB4822AFABE690014A35C /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				46EBB4832AFABE800014A35C /* ImageLoader.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,8 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46EBB47F2AFA4F1B0014A35C /* NewsDetailViewModel.swift in Sources */,
+				46EBB47F2AFA4F1B0014A35C /* ArticleDetailViewModel.swift in Sources */,
 				46EBB4812AFA62710014A35C /* SourceView.swift in Sources */,
+				46EBB4842AFABE800014A35C /* ImageLoader.swift in Sources */,
 				4653FA262AF7FC8D008E7EB8 /* FreshNewsCellViewModel.swift in Sources */,
 				463BE2DC2AE4153F007843E3 /* SearchCell.swift in Sources */,
 				4647B1172ADC510F0014F39B /* Colors.swift in Sources */,

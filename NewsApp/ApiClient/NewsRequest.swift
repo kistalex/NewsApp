@@ -59,13 +59,14 @@ final class NewsRequest {
 
 extension NewsRequest {
     static let listNewsRequest = NewsRequest(endpoint: NewsEndpoint.everything, pathComponents: [], queryParameters: [
-        URLQueryItem(name: "q", value: "today"),
+        URLQueryItem(name: "q", value: "Ukraine"),
         URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
         URLQueryItem(name: "sortBy", value: "publishedAt"),
         URLQueryItem(name: "pageSize", value: "10")
     ])
     static let listTopNewsRequest = NewsRequest(endpoint: NewsEndpoint.topHeadlines ,queryParameters: [
-        URLQueryItem(name: "country", value: "ru"),
-        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab")
+        URLQueryItem(name: "country", value: "us"),
+        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
+        URLQueryItem(name: "category", value: "health")
     ])
 }

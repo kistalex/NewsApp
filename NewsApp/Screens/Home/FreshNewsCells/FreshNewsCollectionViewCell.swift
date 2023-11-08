@@ -23,7 +23,6 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.backgroundColor = .lightGray.withAlphaComponent(0.4)
         label.numberOfLines = 3
         label.font = UIFont(name: TextFont.Nunito.regular.rawValue, size: 14)
         return label
@@ -64,6 +63,7 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(backgroundImageView)
         contentView.sendSubviewToBack(backgroundImageView)
 
+        contentView.backgroundColor = UIColor(named: ColorName.mainColor.rawValue)
         backgroundImageView.alpha = 0.9
 
         backgroundImageView.snp.makeConstraints { make in
@@ -75,9 +75,9 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
         }
         descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.trailing.equalTo(titleLabel)
-            make.bottom.equalToSuperview()
+                make.top.equalTo(titleLabel.snp.bottom).offset(10)
+                make.leading.trailing.equalTo(titleLabel)
+                make.bottom.equalToSuperview()
         }
     }
 
@@ -91,11 +91,9 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
                     let image = UIImage(data: data)
                     self?.backgroundImageView.image = image
                 }
-            case .failure:
-                DispatchQueue.main.async {
-                    let image = UIImage(systemName: "questionmark")
-                    self?.backgroundImageView.image = image
-                }
+            case .failure(let error):
+                print(String(describing: error))
+                self?.backgroundImageView.removeFromSuperview()
             }
         }
     }

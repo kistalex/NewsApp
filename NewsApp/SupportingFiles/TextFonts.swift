@@ -6,7 +6,6 @@
 // Created by Alexander Kist on 15.10.2023.
 //
 
-
 import Foundation
 
 enum TextFont {
@@ -24,6 +23,3 @@ enum TextFont {
         case semiBold = "NewYorkLarge-Semibold"
     }
 }
-
-
-

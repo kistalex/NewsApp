@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MenuCellDelegate: AnyObject {
+    func createRequestFor(category: String)
+}
+
 final class MenuTableViewCell: UITableViewCell {
 
     private let menuCategories = ["Business", "Entertainment", "General", "Health", "Science", "Sports", "Technology"]
@@ -19,6 +23,8 @@ final class MenuTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
+
+    weak var delegate: MenuCellDelegate?
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -32,12 +38,13 @@ final class MenuTableViewCell: UITableViewCell {
 
     private func setupViews() {
         contentView.addSubview(collectionView)
-        backgroundColor = .white
+        backgroundColor = .none
         collectionView.backgroundColor = .clear
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.alwaysBounceHorizontal = true
         collectionView.register(MenuCollectionViewCell.self, forCellWithReuseIdentifier: "\(MenuCollectionViewCell.self)")
+        collectionView.selectItem(at: [0,0], animated: true, scrollPosition: .centeredHorizontally)
     }
 
     private func setConstraints() {
@@ -46,6 +53,16 @@ final class MenuTableViewCell: UITableViewCell {
             make.top.bottom.equalToSuperview().inset(20)
             make.height.equalTo(40).multipliedBy(0.4)
         }
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension MenuTableViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = menuCategories[indexPath.row].lowercased()
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        print(selectedCategory)
+        delegate?.createRequestFor(category: selectedCategory)
     }
 }
 

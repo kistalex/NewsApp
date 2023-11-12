@@ -2,7 +2,7 @@
 //
 // NewsApp
 // CategoryArticleCellViewModel.swift
-// 
+//
 // Created by Alexander Kist on 12.11.2023.
 //
 
@@ -30,14 +30,12 @@ final class CategoryArticleCellViewModel: NSObject {
         }
     }
 
-    private var categoryArticleCellViewModels: [CategoryCollectionViewCellViewModel] = []
-
     func fetchArticles() {
         NewsService.shared.execute(
             NewsRequest(endpoint: NewsEndpoint.topHeadlines ,queryParameters: [
                 URLQueryItem(name: "country", value: "us"),
                 URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
-                URLQueryItem(name: "category", value: "sports")
+                URLQueryItem(name: "category", value: "business")
             ]),
             expecting: News.self) { [weak self] result in
                 switch result {
@@ -52,8 +50,10 @@ final class CategoryArticleCellViewModel: NSObject {
                 }
             }
     }
+    private var categoryArticleCellViewModels: [CategoryCollectionViewCellViewModel] = []
 }
 
+// MARK: - UICollectionViewDataSource
 extension CategoryArticleCellViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categoryArticleCellViewModels.count
@@ -67,7 +67,7 @@ extension CategoryArticleCellViewModel: UICollectionViewDataSource {
         return cell
     }
 }
-
+// MARK: - UICollectionViewDelegateFlowLayout
 extension CategoryArticleCellViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size

@@ -10,12 +10,12 @@ import UIKit
 
 final class MenuCollectionViewCell: UICollectionViewCell {
 
-    lazy var  menuButton: UIButton = {
-        let button = UIButton()
-        button.tintColor = .white
-        button.titleLabel?.font = UIFont(name: TextFont.Nunito.semiBold.rawValue, size: 14)
-        button.addTarget(self, action: #selector(menuButtonTapped), for: .touchUpInside)
-        return button
+    private let categoryLabel: UILabel = {
+       let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont(name: TextFont.Nunito.semiBold.rawValue, size: 14)
+        label.textColor = .black
+        return label
     }()
 
     override init(frame: CGRect) {
@@ -28,8 +28,11 @@ final class MenuCollectionViewCell: UICollectionViewCell {
       layer.masksToBounds = true
     }
 
-    @objc func menuButtonTapped() {
-        print("menuButtonTapped")
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = self.isSelected ? .main : .unselected
+            categoryLabel.textColor = self.isSelected ? .white : .black
+        }
     }
 
     required init?(coder: NSCoder) {
@@ -38,16 +41,16 @@ final class MenuCollectionViewCell: UICollectionViewCell {
     }
 
     private func setupViews() {
-        backgroundColor = UIColor(named: ColorName.mainColor.rawValue)
+        backgroundColor = UIColor(named: ColorName.unselectedColor.rawValue)
 
-        contentView.addSubview(menuButton)
+        contentView.addSubview(categoryLabel)
 
-        menuButton.snp.makeConstraints { make in
+        categoryLabel.snp.makeConstraints { make in
             make.centerX.centerY.equalToSuperview()
         }
     }
 
-    func configure(with label: String) {
-        menuButton.setTitle(label, for: .normal)
+    func configure(with text: String) {
+        categoryLabel.text = text
     }
 }

@@ -361,8 +361,8 @@
 		46E3E34B2B0101A0005FE091 /* CategoryArticles */ = {
 			isa = PBXGroup;
 			children = (
-				46E3E34C2B0101ED005FE091 /* CategoryCollectionViewCellViewModel.swift */,
 				46E3E34E2B01039D005FE091 /* CategoryArticleCellViewModel.swift */,
+				46E3E34C2B0101ED005FE091 /* CategoryCollectionViewCellViewModel.swift */,
 			);
 			name = CategoryArticles;
 			sourceTree = "<group>";

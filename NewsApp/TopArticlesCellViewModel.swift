@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol NewsCellViewModelDelegate: AnyObject {
+protocol TopArticlesCellViewModelDelegate: AnyObject {
     func didTopNewsFetched()
     func didSelectArticle(_ article: Article)
 }
 
 final class TopArticlesCellViewModel: NSObject {
 
-    weak var delegate: NewsCellViewModelDelegate?
+    weak var delegate: TopArticlesCellViewModelDelegate?
 
     private var topNews: [Article] = [] {
         didSet {

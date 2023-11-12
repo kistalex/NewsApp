@@ -15,7 +15,7 @@ protocol CategoryArticlesTableCellDelegate: AnyObject {
     )
 }
 
-class CategoryArticlesTableCell: UITableViewCell {
+final class CategoryArticlesTableCell: UITableViewCell {
 
     weak var delegate: CategoryArticlesTableCellDelegate?
 

@@ -77,7 +77,7 @@ final class TopArticlesTableViewCell: UITableViewCell {
     }
 }
 
-extension TopArticlesTableViewCell: NewsCellViewModelDelegate {
+extension TopArticlesTableViewCell: TopArticlesCellViewModelDelegate {
     func didSelectArticle(_ article: Article) {
         delegate?.topArticlesTableViewCell(self, didSelectArticle: article)
     }

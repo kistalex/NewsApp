@@ -32,7 +32,7 @@ final class HomeViewController: UIViewController {
         freshNewsTableView.separatorStyle = .none
         freshNewsTableView.backgroundColor = .clear
         freshNewsTableView.allowsSelection = true
-        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
+//        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
         freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
         freshNewsTableView.register(TopArticlesTableViewCell.self, forCellReuseIdentifier: "\(TopArticlesTableViewCell.self)")
         freshNewsTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "\(MenuTableViewCell.self)")
@@ -50,27 +50,27 @@ final class HomeViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SearchCell.self)", for: indexPath) as? SearchCell else {
-                return UITableViewCell()
-            }
-            return cell
-        } else  if indexPath.row == 1 {
+//        if indexPath.row == 0 {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SearchCell.self)", for: indexPath) as? SearchCell else {
+//                return UITableViewCell()
+//            }
+//            return cell
+  /*      } else*/  if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(HeaderViewCell.self)", for: indexPath) as? HeaderViewCell else {
                 return UITableViewCell()
             }
             return cell
-        } else if indexPath.row == 2 {
+        } else if indexPath.row == 1 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TopArticlesTableViewCell.self)", for: indexPath) as? TopArticlesTableViewCell else {
                 return UITableViewCell()
             }
             cell.delegate = self
             return cell
-        } else if indexPath.row == 3 {
+        } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MenuTableViewCell.self)", for: indexPath) as? MenuTableViewCell else {
                 return UITableViewCell()
             }

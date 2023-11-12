@@ -84,7 +84,7 @@ class CategoryNewsCollectionViewCell: UICollectionViewCell {
                     let image = UIImage(data: data)
                     self?.backgroundImageView.image = image
                 }
-            case .failure(let error):
+            case .failure:
                 DispatchQueue.main.async {
                     self?.backgroundImageView.image = UIImage(named: "noImage")
                 }

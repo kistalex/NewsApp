@@ -1,14 +1,14 @@
 //
 //
 // NewsApp
-// NewsCollectionViewCellViewModel.swift
+// TopArticlesCollectionViewCellViewModel.swift
 //
 // Created by Alexander Kist on 05.11.2023.
 //
 
 import Foundation
 
-final class NewsCollectionViewCellViewModel {
+final class TopArticlesCollectionViewCellViewModel {
     public let title: String
     public let description: String?
     public let urlToImage: URL?

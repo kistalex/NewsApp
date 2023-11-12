@@ -1,26 +1,26 @@
 //
 //
 // NewsApp
-// FreshNewsCellViewModel.swift
+// TopArticlesCellViewModel.swift
 //
 // Created by Alexander Kist on 05.11.2023.
 //
 
 import UIKit
 
-protocol FreshNewsCellViewModelDelegate: AnyObject {
+protocol NewsCellViewModelDelegate: AnyObject {
     func didTopNewsFetched()
-    func didSelectNews(_ news: Article)
+    func didSelectArticle(_ article: Article)
 }
 
-final class FreshNewsCellViewModel: NSObject {
+final class TopArticlesCellViewModel: NSObject {
 
-    weak var delegate: FreshNewsCellViewModelDelegate?
+    weak var delegate: NewsCellViewModelDelegate?
 
     private var topNews: [Article] = [] {
         didSet {
             newsCellViewModels = topNews.map { article in
-                return NewsCollectionViewCellViewModel(
+                return TopArticlesCollectionViewCellViewModel(
                     title: article.title,
                     description: article.description,
                     urlToImage: URL(string: article.urlToImage ?? "")
@@ -35,8 +35,8 @@ final class FreshNewsCellViewModel: NSObject {
         }
     }
 
-    private var newsCellViewModels: [NewsCollectionViewCellViewModel] = []
-    private var firstFiveViewModels: [NewsCollectionViewCellViewModel] = []
+    private var newsCellViewModels: [TopArticlesCollectionViewCellViewModel] = []
+    private var firstFiveViewModels: [TopArticlesCollectionViewCellViewModel] = []
 
     func fetchTopNews() {
         NewsService.shared.execute(
@@ -57,14 +57,14 @@ final class FreshNewsCellViewModel: NSObject {
 }
 
 // MARK: - UICollectionViewDataSource
-extension FreshNewsCellViewModel: UICollectionViewDataSource {
+extension TopArticlesCellViewModel: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         return firstFiveViewModels.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(FreshNewsCollectionViewCell.self)", for: indexPath) as? FreshNewsCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(TopArticleCollectionViewCell.self)", for: indexPath) as? TopArticleCollectionViewCell else {
             return UICollectionViewCell()
         }
 
@@ -74,7 +74,7 @@ extension FreshNewsCellViewModel: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension FreshNewsCellViewModel: UICollectionViewDelegateFlowLayout {
+extension TopArticlesCellViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
         return CGSize(width: size.width - 50 , height: size.height)
@@ -85,10 +85,10 @@ extension FreshNewsCellViewModel: UICollectionViewDelegateFlowLayout {
     }
 }
 // MARK: - UICollectionViewDelegate
-extension FreshNewsCellViewModel: UICollectionViewDelegate {
+extension TopArticlesCellViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let article = topNews[indexPath.row]
-        delegate?.didSelectNews(article)
+        delegate?.didSelectArticle(article)
     }
 }

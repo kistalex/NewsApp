@@ -34,9 +34,9 @@ final class HomeViewController: UIViewController {
         freshNewsTableView.allowsSelection = true
         freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
         freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
-        freshNewsTableView.register(FreshNewsTableViewCell.self, forCellReuseIdentifier: "\(FreshNewsTableViewCell.self)")
+        freshNewsTableView.register(TopArticlesTableViewCell.self, forCellReuseIdentifier: "\(TopArticlesTableViewCell.self)")
         freshNewsTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "\(MenuTableViewCell.self)")
-        freshNewsTableView.register(CategoryNewsTableCell.self, forCellReuseIdentifier: "\(CategoryNewsTableCell.self)")
+        freshNewsTableView.register(CategoryArticlesTableCell.self, forCellReuseIdentifier: "\(CategoryArticlesTableCell.self)")
     }
 
     private func setConstraints() {
@@ -65,7 +65,7 @@ extension HomeViewController: UITableViewDataSource {
             }
             return cell
         } else if indexPath.row == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(FreshNewsTableViewCell.self)", for: indexPath) as? FreshNewsTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TopArticlesTableViewCell.self)", for: indexPath) as? TopArticlesTableViewCell else {
                 return UITableViewCell()
             }
             cell.delegate = self
@@ -76,19 +76,29 @@ extension HomeViewController: UITableViewDataSource {
             }
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CategoryNewsTableCell.self)", for: indexPath) as? CategoryNewsTableCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CategoryArticlesTableCell.self)", for: indexPath) as? CategoryArticlesTableCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             return cell
         }
     }
 }
 
-extension HomeViewController: FreshNewsTableViewCellDelegate {
-    func freshNewsTableViewCell(_ freshNewsTableViewCell: FreshNewsTableViewCell, didSelectNews article: Article) {
+extension HomeViewController: TopArticlesTableViewCellDelegate {
+    func topArticlesTableViewCell(_ topArticlesTableViewCell: TopArticlesTableViewCell, didSelectArticle article: Article) {
         let viewModel = ArticleDetailViewModel(article: article)
         let detailVC = NewsDetailViewController(viewModel: viewModel)
-//        detailVC.configure(viewModel)
+        detailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension HomeViewController: CategoryArticlesTableCellDelegate {
+    func categoryArticlesTableViewCell(_ categoryArticlesTableViewCell: CategoryArticlesTableCell, didSelectArticle article: Article) {
+        let viewModel = ArticleDetailViewModel(article: article)
+        let detailVC = NewsDetailViewController(viewModel: viewModel)
+        detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

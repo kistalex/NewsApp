@@ -1,7 +1,7 @@
 //
 //
 // NewsApp
-// FreshNewsCollectionViewCell.swift
+// TopArticleCollectionViewCell.swift
 //
 // Created by Alexander Kist on 17.10.2023.
 //
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-final class FreshNewsCollectionViewCell: UICollectionViewCell {
+final class TopArticleCollectionViewCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -81,7 +81,7 @@ final class FreshNewsCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func configure(with viewModel: NewsCollectionViewCellViewModel) {
+    func configure(with viewModel: TopArticlesCollectionViewCellViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
         viewModel.fetchImage { [weak self] result in

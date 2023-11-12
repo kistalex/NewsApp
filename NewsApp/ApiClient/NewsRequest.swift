@@ -42,11 +42,11 @@ final class NewsRequest {
     }
 
     public let httpMethod = "GET"
-    /// Создание  API url
+
     public var url: URL? {
         return URL(string: urlString)
     }
-    /// Конструктор запроса
+
     public init(
         endpoint: NewsEndpoint,
         pathComponents: [String] = [],
@@ -66,7 +66,6 @@ extension NewsRequest {
     ])
     static let listTopNewsRequest = NewsRequest(endpoint: NewsEndpoint.topHeadlines ,queryParameters: [
         URLQueryItem(name: "country", value: "us"),
-        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
-        URLQueryItem(name: "category", value: "health")
+        URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab")
     ])
 }

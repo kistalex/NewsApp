@@ -32,11 +32,11 @@ final class HomeViewController: UIViewController {
         freshNewsTableView.separatorStyle = .none
         freshNewsTableView.backgroundColor = .clear
         freshNewsTableView.allowsSelection = true
-        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
+//        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
         freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
-        freshNewsTableView.register(FreshNewsTableViewCell.self, forCellReuseIdentifier: "\(FreshNewsTableViewCell.self)")
+        freshNewsTableView.register(TopArticlesTableViewCell.self, forCellReuseIdentifier: "\(TopArticlesTableViewCell.self)")
         freshNewsTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "\(MenuTableViewCell.self)")
-        freshNewsTableView.register(CategoryNewsTableCell.self, forCellReuseIdentifier: "\(CategoryNewsTableCell.self)")
+        freshNewsTableView.register(CategoryArticlesTableCell.self, forCellReuseIdentifier: "\(CategoryArticlesTableCell.self)")
     }
 
     private func setConstraints() {
@@ -50,45 +50,55 @@ final class HomeViewController: UIViewController {
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SearchCell.self)", for: indexPath) as? SearchCell else {
-                return UITableViewCell()
-            }
-            return cell
-        } else  if indexPath.row == 1 {
+//        if indexPath.row == 0 {
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(SearchCell.self)", for: indexPath) as? SearchCell else {
+//                return UITableViewCell()
+//            }
+//            return cell
+  /*      } else*/  if indexPath.row == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(HeaderViewCell.self)", for: indexPath) as? HeaderViewCell else {
                 return UITableViewCell()
             }
             return cell
-        } else if indexPath.row == 2 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(FreshNewsTableViewCell.self)", for: indexPath) as? FreshNewsTableViewCell else {
+        } else if indexPath.row == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(TopArticlesTableViewCell.self)", for: indexPath) as? TopArticlesTableViewCell else {
                 return UITableViewCell()
             }
             cell.delegate = self
             return cell
-        } else if indexPath.row == 3 {
+        } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(MenuTableViewCell.self)", for: indexPath) as? MenuTableViewCell else {
                 return UITableViewCell()
             }
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CategoryNewsTableCell.self)", for: indexPath) as? CategoryNewsTableCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "\(CategoryArticlesTableCell.self)", for: indexPath) as? CategoryArticlesTableCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
             return cell
         }
     }
 }
 
-extension HomeViewController: FreshNewsTableViewCellDelegate {
-    func freshNewsTableViewCell(_ freshNewsTableViewCell: FreshNewsTableViewCell, didSelectNews article: Article) {
+extension HomeViewController: TopArticlesTableViewCellDelegate {
+    func topArticlesTableViewCell(_ topArticlesTableViewCell: TopArticlesTableViewCell, didSelectArticle article: Article) {
         let viewModel = ArticleDetailViewModel(article: article)
         let detailVC = NewsDetailViewController(viewModel: viewModel)
-//        detailVC.configure(viewModel)
+        detailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
+}
+
+extension HomeViewController: CategoryArticlesTableCellDelegate {
+    func categoryArticlesTableViewCell(_ categoryArticlesTableViewCell: CategoryArticlesTableCell, didSelectArticle article: Article) {
+        let viewModel = ArticleDetailViewModel(article: article)
+        let detailVC = NewsDetailViewController(viewModel: viewModel)
+        detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }

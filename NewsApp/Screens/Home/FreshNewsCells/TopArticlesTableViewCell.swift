@@ -1,25 +1,36 @@
 //
 //
 // NewsApp
-// FreshNewsTableViewCell.swift
+// TopArticlesTableViewCell.swift
 //
 // Created by Alexander Kist on 17.10.2023.
 //
 
 import UIKit
 
-protocol FreshNewsTableViewCellDelegate: AnyObject {
-    func freshNewsTableViewCell(
-        _ freshNewsTableViewCell: FreshNewsTableViewCell,
-        didSelectNews article: Article
+protocol TopArticlesTableViewCellDelegate: AnyObject {
+    func topArticlesTableViewCell(
+        _ topArticlesTableViewCell: TopArticlesTableViewCell,
+        didSelectArticle article: Article
     )
 }
 
-final class FreshNewsTableViewCell: UITableViewCell {
+final class TopArticlesTableViewCell: UITableViewCell {
 
-    public weak var delegate: FreshNewsTableViewCellDelegate?
+    public weak var delegate: TopArticlesTableViewCellDelegate?
 
-    private let viewModel = FreshNewsCellViewModel()
+    private let viewModel = TopArticlesCellViewModel()
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupViews()
+        viewModel.fetchTopNews()
+        setConstraints()
+    }
+
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -40,18 +51,6 @@ final class FreshNewsTableViewCell: UITableViewCell {
         return spinner
     }()
 
-    private let label = UILabel()
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupViews()
-        viewModel.fetchTopNews()
-        setConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-
     private func setupViews() {
         contentView.addSubview(collectionView)
         contentView.addSubview(spinner)
@@ -61,7 +60,7 @@ final class FreshNewsTableViewCell: UITableViewCell {
         collectionView.dataSource = viewModel
         viewModel.delegate = self
         collectionView.alwaysBounceHorizontal = true
-        collectionView.register(FreshNewsCollectionViewCell.self, forCellWithReuseIdentifier: "\(FreshNewsCollectionViewCell.self)")
+        collectionView.register(TopArticleCollectionViewCell.self, forCellWithReuseIdentifier: "\(TopArticleCollectionViewCell.self)")
 
     }
 
@@ -78,9 +77,9 @@ final class FreshNewsTableViewCell: UITableViewCell {
     }
 }
 
-extension FreshNewsTableViewCell: FreshNewsCellViewModelDelegate {
-    func didSelectNews(_ news: Article) {
-        delegate?.freshNewsTableViewCell(self, didSelectNews: news)
+extension TopArticlesTableViewCell: TopArticlesCellViewModelDelegate {
+    func didSelectArticle(_ article: Article) {
+        delegate?.topArticlesTableViewCell(self, didSelectArticle: article)
     }
 
     func didTopNewsFetched() {

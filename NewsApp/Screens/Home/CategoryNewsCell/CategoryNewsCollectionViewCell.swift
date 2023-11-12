@@ -18,8 +18,7 @@ class CategoryNewsCollectionViewCell: UICollectionViewCell {
 
     private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.image = UIImage(named: "flowers")
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
 
@@ -34,6 +33,14 @@ class CategoryNewsCollectionViewCell: UICollectionViewCell {
         setupViews()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
+        authorLabel.text = nil
+        dateLabel.text = nil
+        backgroundImageView.image = nil
+    }
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -44,12 +51,6 @@ class CategoryNewsCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(authorLabel)
         contentView.addSubview(dateLabel)
         contentView.sendSubviewToBack(backgroundImageView)
-
-        backgroundColor = .yellow.withAlphaComponent(0.4)
-
-        titleLabel.text = "5 things to know about the 'conundrum' of lupus"
-        authorLabel.text = "Matt Villano"
-        dateLabel.text = "Sunday, 9 May 2021"
 
         backgroundImageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -69,6 +70,25 @@ class CategoryNewsCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(authorLabel.snp.top)
             make.trailing.equalTo(contentView.snp.trailing).inset(8)
             make.bottom.equalToSuperview().inset(8)
+        }
+    }
+
+    func configure(with viewModel: CategoryCollectionViewCellViewModel) {
+        titleLabel.text = viewModel.title
+        authorLabel.text = viewModel.author
+        dateLabel.text = viewModel.formattedPublishedAt
+        viewModel.fetchImage { [weak self] result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    let image = UIImage(data: data)
+                    self?.backgroundImageView.image = image
+                }
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.backgroundImageView.image = UIImage(named: "noImage")
+                }
+            }
         }
     }
 }

@@ -30,12 +30,12 @@ final class CategoryArticleCellViewModel: NSObject {
         }
     }
 
-    func fetchArticles() {
+    func fetchArticles(with category: String) {
         NewsService.shared.execute(
             NewsRequest(endpoint: NewsEndpoint.topHeadlines ,queryParameters: [
                 URLQueryItem(name: "country", value: "us"),
                 URLQueryItem(name: "apiKey", value: "e90c6e13d6bd429a8128e1ab85cd85ab"),
-                URLQueryItem(name: "category", value: "business")
+                URLQueryItem(name: "category", value: category)
             ]),
             expecting: News.self) { [weak self] result in
                 switch result {
@@ -50,6 +50,7 @@ final class CategoryArticleCellViewModel: NSObject {
                 }
             }
     }
+
     private var categoryArticleCellViewModels: [CategoryCollectionViewCellViewModel] = []
 }
 
@@ -71,12 +72,13 @@ extension CategoryArticleCellViewModel: UICollectionViewDataSource {
 extension CategoryArticleCellViewModel: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = collectionView.frame.size
-        return CGSize(width: size.width - 30 , height: size.height / 2)
+        return CGSize(width: size.width - 30 , height: size.height / 6)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     }
+
 }
 
 // MARK: - UICollectionViewDelegate

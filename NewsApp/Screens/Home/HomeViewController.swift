@@ -15,11 +15,12 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.title = "Главное"
         setupViews()
         setConstraints()
         setupTableView()
+        setupSearchBarItem()
     }
     private func setupViews() {
         view.addSubview(freshNewsTableView)
@@ -32,11 +33,20 @@ final class HomeViewController: UIViewController {
         freshNewsTableView.separatorStyle = .none
         freshNewsTableView.backgroundColor = .clear
         freshNewsTableView.allowsSelection = true
-//        freshNewsTableView.register(SearchCell.self, forCellReuseIdentifier: "\(SearchCell.self)")
+        freshNewsTableView.estimatedRowHeight = UITableView.automaticDimension
         freshNewsTableView.register(HeaderViewCell.self, forCellReuseIdentifier: "\(HeaderViewCell.self)")
         freshNewsTableView.register(TopArticlesTableViewCell.self, forCellReuseIdentifier: "\(TopArticlesTableViewCell.self)")
         freshNewsTableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "\(MenuTableViewCell.self)")
         freshNewsTableView.register(CategoryArticlesTableCell.self, forCellReuseIdentifier: "\(CategoryArticlesTableCell.self)")
+    }
+
+    private func setupSearchBarItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .search, primaryAction: UIAction(handler: { _ in
+            let searchVC = SearchViewController()
+            searchVC.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(searchVC, animated: true)
+        }))
+        navigationItem.rightBarButtonItem?.tintColor = .main
     }
 
     private func setConstraints() {
@@ -45,6 +55,7 @@ final class HomeViewController: UIViewController {
             make.bottom.equalTo(view.snp.bottom)
         }
     }
+
 }
 
 // MARK: - UITableViewDataSource

@@ -17,7 +17,7 @@ protocol TopArticlesTableViewCellDelegate: AnyObject {
 
 final class TopArticlesTableViewCell: UITableViewCell {
 
-    public weak var delegate: TopArticlesTableViewCellDelegate?
+    weak var delegate: TopArticlesTableViewCellDelegate?
 
     private let viewModel = TopArticlesCellViewModel()
 

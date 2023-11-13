@@ -19,7 +19,7 @@ final class ImageLoader {
         let key = url.absoluteString as NSString
 
         if let data = imageDataCache.object(forKey: key) {
-//           к
+            print("Reading from cache")
             completion(.success(data as Data))
             return
         }

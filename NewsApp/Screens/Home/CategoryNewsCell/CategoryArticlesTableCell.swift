@@ -24,12 +24,23 @@ final class CategoryArticlesTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        viewModel.fetchArticles()
         setConstraints()
+        viewModel.fetchArticles(with: "business")
+        NotificationCenter.default.addObserver(self, selector: #selector(categorySelected(_:)), name: Notification.Name("CategorySelected"), object: nil)
     }
+
+    @objc private func categorySelected(_ notification: Notification) {
+            if let category = notification.userInfo?["category"] as? String {
+                viewModel.fetchArticles(with: category)
+            }
+        }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private lazy var collectionView: UICollectionView = {
@@ -65,7 +76,7 @@ final class CategoryArticlesTableCell: UITableViewCell {
     private func setConstraints() {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(240).multipliedBy(0.4)
+            make.height.equalTo(1000).multipliedBy(0.4)
         }
 
         spinner.snp.makeConstraints { make in
@@ -79,6 +90,7 @@ extension CategoryArticlesTableCell: CategoryArticleCellViewModelDelegate {
         spinner.stopAnimating()
         collectionView.isHidden = false
         collectionView.reloadData()
+        collectionView.selectItem(at: [0,0], animated: true, scrollPosition: .top)
         UIView.animate(withDuration: 1) {
             self.collectionView.alpha = 1
         }

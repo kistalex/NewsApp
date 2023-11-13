@@ -13,7 +13,7 @@ final class MainTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         createTabBar()
-//        setTabBarAppearance()
+        setTabBarAppearance()
     }
 
     private func createTabBar() {
@@ -40,7 +40,7 @@ final class MainTabBarController: UITabBarController {
         return UINavigationController(rootViewController: viewController)
     }
 
-//    private func setTabBarAppearance() {
+    private func setTabBarAppearance() {
 //        let positionOnY: CGFloat = 10
 //        let positionOnX: CGFloat = 14
 //
@@ -67,9 +67,9 @@ final class MainTabBarController: UITabBarController {
 //
 //        tabBar.layer.insertSublayer(roundLayer, at: 0)
 //        tabBar.itemWidth = width / 5
-//        tabBar.itemPositioning = .centered
-//        tabBar.tintColor = UIColor.main
-//        tabBar.unselectedItemTintColor = UIColor.unselected
-//    }
+        tabBar.itemPositioning = .centered
+        tabBar.tintColor = UIColor.main
+        tabBar.unselectedItemTintColor = UIColor.unselected
+    }
 
 }

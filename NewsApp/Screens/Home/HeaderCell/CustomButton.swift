@@ -23,6 +23,7 @@ final class CustomButton: UIButton {
         configureButton()
         configureSubviews()
         configureConstraints()
+
     }
 
     required init?(coder: NSCoder) {
